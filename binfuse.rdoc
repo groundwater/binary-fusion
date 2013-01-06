@@ -1,0 +1,5 @@
+= binfuse
+
+Generate this with
+    binfuse rdoc
+After you have described your command line interface

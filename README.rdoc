@@ -1,0 +1,6 @@
+= binfuse
+
+Describe your project here
+
+:include:binfuse.rdoc
+
