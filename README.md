@@ -1,6 +1,10 @@
-# Binary Fusion
+# BinaryFusion
 
 >  Robust Application Development, and Distribution
+
+BinaryFusion fuses application with virtual machine images to create 
+isolated, robust, and reliable machine images that can be used both in 
+development and production.
 
 ## Installation
 
@@ -10,14 +14,8 @@
 
 ## Usage
 
-    NAME
-        binfuse - 
-
     SYNOPSIS
         binfuse [global options] command [command options] [arguments...]
-
-    VERSION
-        0.0.1
 
     GLOBAL OPTIONS
         --version                               - 
