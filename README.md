@@ -6,6 +6,8 @@ BinaryFusion fuses application with virtual machine images to create
 isolated, robust, and reliable machine images that can be used both in 
 development and production.
 
+![Binary Fusion Overview](https://raw.github.com/jacobgroundwater/binary-fusion/assets/Export/Overview.png)
+
 ## Installation
 
     $ gem install binfuse
