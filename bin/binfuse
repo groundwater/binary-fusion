@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 require 'gli'
+require 'paint'
+require 'progress_bar'
+
 begin # XXX: Remove this begin/rescue before distributing your app
 require 'binfuse'
 rescue LoadError
@@ -26,6 +29,14 @@ flag [:f,:flagname]
 desc 'Describe create here'
 arg_name 'Describe arguments to create here'
 command :create do |c|
+  c.desc 'use base image IMAGE'
+  c.default_value 'Ubuntu x64'
+  c.flag [:m,'base-image']
+  
+  c.desc 'use build file FILE'
+  c.default_value 'Buildfile'
+  c.flag [:b,'build-file']
+  
   c.desc 'Describe a switch to create'
   c.switch :s
 
@@ -35,11 +46,37 @@ command :create do |c|
   c.action do |global_options,options,args|
 
     # Your command logic here
-     
+    puts Console::INFO + 'Downloading Base Image ' + Paint[ options[:m], :bold]
+    
+    bar = ProgressBar.new(100, :bar, :elapsed, :eta)
+    100.times do
+      sleep 0.06
+      bar.increment! 1
+    end
+    puts Console::INFO + 'Download Complete'
+    
+    puts Console::INFO + 'Loading Build File: '    + Paint[ options[:b], :bold]
+    puts Console::INFO + 'Building Image'
+    puts Console::Indent(1) + Paint['Installing Package "Nginx"',   :white]; sleep 1
+    puts Console::Indent(1) + Paint['Installing Package "Node.js"', :white]; sleep 1
+    puts Console::Indent(1) + Paint['Installing Service Container', :white]; sleep 1
+    puts Console::Indent(1) + Paint['Installing Application', :white]; sleep 1
+    
+    puts Console::INFO + 'Running Tests ...'
+    puts Console::Indent(1) + Paint['Testing Application Failover', :white] + Paint[" \u2714 Okay", :green]; sleep 1
+    puts Console::Indent(1) + Paint['Testing System Startup', :white] + Paint[" \u2714 Okay", :green]; sleep 1
+    puts Console::Indent(1) + Paint['Testing Crash Recovery', :white] + Paint[" \u2714 Okay", :green]; sleep 1
+    
+    puts Console::INFO + 'Saving Image'
+    
     # If you have any errors, just raise them
     # raise "that command made no sense"
-
-    puts "create command ran"
+    
+    puts Console::DONE + 'Image Creation Done!'
+    puts Console::INFO + 'Use ' + \
+      Paint['binfuse spawn myapp@38ddf2', :white] + \
+      ' to attach and run this image'
+    
   end
 end
 

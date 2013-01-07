@@ -24,4 +24,6 @@ lib/binfuse.rb
   s.add_development_dependency('rdoc')
   s.add_development_dependency('aruba')
   s.add_runtime_dependency('gli','2.5.3')
+  s.add_runtime_dependency('paint','0.8.5')
+  s.add_runtime_dependency('progress_bar','0.4.0')
 end
