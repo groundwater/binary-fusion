@@ -80,6 +80,21 @@ command :create do |c|
   end
 end
 
+desc 'Initialize a new Buildfile'
+# arg_name 'Describe arguments to test here'
+command :init do |c|
+  c.action do |global_options,options,args|
+    STDOUT.sync = true
+    default = "Nodejs"
+    print "Project Type #{default}: "
+    type = gets.chomp
+    if type==''
+      type = default
+    end
+    puts "Initializing New #{type} Project"
+  end
+end
+
 desc 'Describe test here'
 arg_name 'Describe arguments to test here'
 command :test do |c|
