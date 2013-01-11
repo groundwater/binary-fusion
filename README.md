@@ -68,8 +68,6 @@ A web server for example can run multiple concurrent processes that share the sa
 
 ### Web Server
 
-#### API Overview
-
 The web server provides the following application controls and interfaces:
 
 ##### Manager
