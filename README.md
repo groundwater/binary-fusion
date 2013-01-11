@@ -1,35 +1,40 @@
 ## Overview
 
-### Manager
+The application container is separated into two parts:
 
-- start/stop/restart processes
-- send signal to processes (e.g. SIGINT)
-- set/get environment variables
-- set port numbers
-
-### Supervisor
-
-- restart process on crash
-- throttle restart if process is thrashing
-- log exit codes
-
-### Monitor
-
-- collect `STDOUT` and `STDERR` for each process
+- the **supervisor** spawns and watches application processes
+- the **web server** provides a web-based API for controlling the application
 
 ## Design
 
-Process Hierarchy
+### Application Container
+
+The App Container is a generic tool for starting and manager user applications.
+The language and type of user application is irrelevant,
+because it uses the `Procfile` format.
+
+#### Procfile
+
+A `Procfile` is a text file that lives at the root of your application.
+It has one line for each type of process you wish to run,
+and each line is prefixed by the processes key.
+
+    web: node server.js
+    log: node logger.js
+
+The application container runs _each_ process in the Procfile.
+
+#### Process Hierarchy
 
     init
-        -> Application Container (uid root)
+        -> supervisor (uid root)
             -> application processes (uid application)
             -> Web Server (uid www)
 
 The app container, started as root, spawns the user application processes and a public web server.
 The app container communicates with the web server via a pipe.
 
-### Application Container
+### Supervisor
 
 The app container starts and monitors child processes specified in the applications `Procfile`.
 
@@ -38,7 +43,42 @@ The app container starts and monitors child processes specified in the applicati
 - thrashing applications are delayed by 2^n seconds, where n is the number of consecutive failures
 - each restart is logged and available via web server stats
 
+#### Socket Connections
+
+Although passing in port numbers as environment variables is popular,
+the preferred method is using pre-opened sockets.
+
+**Connection Steps**
+
+1. the app container opens the desired socket as root (including privileged sockets)
+2. the app container forks drops its privileges to `application`
+3. the app container executes the application with `exec`
+
+Sockets can be shared between child processes.
+A web server for example can run multiple concurrent processes that share the same socket.
+
 ### Web Server
+
+#### API Overview
+
+The web server provides the following application controls and interfaces:
+
+##### Manager
+
+- start/stop/restart processes
+- send signal to processes (e.g. SIGINT)
+- set/get environment variables
+- set port numbers
+
+##### Supervisor
+
+- restart process on crash
+- throttle restart if process is thrashing
+- log exit codes
+
+##### Monitor
+
+- collect `STDOUT` and `STDERR` for each process
 
 #### Routes
 
