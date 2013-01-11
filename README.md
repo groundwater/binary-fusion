@@ -17,7 +17,7 @@ because it uses the `Procfile` format.
 
 A `Procfile` is a text file that lives at the root of your application.
 It has one line for each type of process you wish to run,
-and each line is prefixed by the processes key.
+and each line is prefixed by a unique but arbitrary token.
 
     web: node server.js
     log: node logger.js
@@ -26,13 +26,22 @@ The application container runs _each_ process in the Procfile.
 
 #### Process Hierarchy
 
+When the Application Container starts,
+it runs all processes in the `Procfile`.
+Each process is started as a child of the App Container.
+
+The web api server is also started by the App Container.
+The web server can issue commands to the App Container,
+such as starting or stopping individual processes.
+The app container communicates with the web server via a shared pipe.
+
     init
-        -> supervisor (uid root)
+        -> application container (uid root)
             -> application processes (uid application)
             -> Web Server (uid www)
 
-The app container, started as root, spawns the user application processes and a public web server.
-The app container communicates with the web server via a pipe.
+Should a child process of the App Container die unexpectedly,
+the App Container will start it same process.
 
 ### Supervisor
 
