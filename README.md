@@ -26,46 +26,16 @@ BinaryFusion is a Ruby application that can be installed via Ruby gems.
     $ cd my/project
     $ binfuse init
 
-BinaryFusion requires a base Ubuntu image that will be downloaded during initialization.
+The `init` command will ask you for your AWS credentials,
+and what kind of project you are running.
 
 ## Usage
 
-    SYNOPSIS
-        binfuse [global options] command [command options] [arguments...]
+1. Create a project that contains a `Procfile`
+2. Build an image with `binfuse create`
+3. Done!
 
-    GLOBAL OPTIONS
-        --version                               - 
-
-    COMMANDS
-        init    - Initialize a new Buildfile
-        create  - Fuse a new image from the current Buildfile
-        test    - Test a fused image
-        spawn   - Attach and run a fused image
-        publish - ready and send a fused image to Amazon Web Services
-
-### Init
-
-Initialize an existing application as a BinaryFusion project.
-
-- BinaryFusion will attempt to guess your project type
-
-### Create
-
-Running the BinaryFusion `create` command will generate a **fused image**
-between the current repository branch and your base machine.
-
-### Test
-
-All images should be tested after creation.
-BinaryFusion provides a number of base tests that can be overridden and extended.
-
-### Spawn
-
-Spawning a fused image runs it in the local service network.
-
-### Publish
-
-Push the image to an imaging server for production.
+After an new image has been _fused_ it is ready to be attached and run in AWS.
 
 ## Inspirations and References
 
