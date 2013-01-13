@@ -72,4 +72,5 @@ After an new image has been _fused_ it is ready to be attached and run in AWS.
 - [Awesome Command Line Apps](http://www.awesomecommandlineapps.com/)
 - [Airbnb: Tech Talk - Ben Hindman](https://www.youtube.com/watch?v=Hal00g8o1iY)
 - [Homebrew](http://mxcl.github.com/homebrew/)
-- [BundlingAMI] http://www.vim-fu.com/bundling-versioned-amis-rapidly-in-amazons-ec2/
+- [BundlingAMI blog] (http://www.vim-fu.com/bundling-versioned-amis-rapidly-in-amazons-ec2/)
+- [EC2 API Reference] (http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/query-apis.html)
