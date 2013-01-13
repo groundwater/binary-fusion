@@ -10,29 +10,29 @@ development and production.
 
 ## Product Vision
 
-Problems in traditional application deployment:
+_Problems in traditional application deployment_
 
 - in-place applications updates are risky
 - os updates are difficult without disrupting a running application
 - application rollbacks are difficult
 
-Problems with Platform as a Services:
+_Problems with Platform as a Services_
 
 - prohibitive to create private clouds
 - applications updates can still break a working deployment
 - limited regions per provider
 
-Opportunities with cloud computing:
+_Opportunities with cloud computing_
 
 - cloud computing makes deploying a brand-new application fast, easy, and cheap
-- virtual machine images are immutable, and re-created each update
+- virtual machine images can be re-created each update
     - os is always up to date
-- rather than update existing applications, the entire stack is replaced each update
-    - the entire working stack can be tested before live deployment
+- can replace the entire working stack each update, no risky deployments
+    - the new stack can be tested before live deployment
     - live migration step only involves re-pointing a load balancer
     - rollback is easy
 
-We need good tools that take this approach!
+**We need good tools that take this approach!**
 
 1. a good tool should provision and create an AMI with one command
 2. a good tool should provide good default builds
@@ -62,3 +62,4 @@ After an new image has been _fused_ it is ready to be attached and run in AWS.
 - [Pow](http://pow.cx/)
 - [Awesome Command Line Apps](http://www.awesomecommandlineapps.com/)
 - [Airbnb: Tech Talk - Ben Hindman](https://www.youtube.com/watch?v=Hal00g8o1iY)
+- [Homebrew](http://mxcl.github.com/homebrew/)
