@@ -9,6 +9,7 @@ development and production.
 ![Binary Fusion Overview](https://raw.github.com/jacobgroundwater/binary-fusion/assets/Export/Overview.png)
 
 [dg: sorry if you find these annoying, but i am not sure how one comments in place. Please remove after reading.]
+
 [dg: Perhaps my misread, but the diagram seems to imply that you do not start with an AMI? I think that normally you would want to.]
 
 ## Product Vision
@@ -20,11 +21,11 @@ _Problems in traditional application deployment_
 - application rollbacks are difficult [dg: as long as the recipe scripts are in vc, you can roll these back]
 
 _Problems with Platform as a Services_
-- Paas frameworks will always lag wrt cloud IAAS innovations]
-- IAAS providers will evove and make generic Paas a paasing fad]
+- Paas frameworks will always lag wrt cloud Iaas innovations.
+- Iaas providers will likely evolve and make generic Paas a paasing fad.
 - prohibitive to create private clouds [dg: which aspects are prohibitive?]
 - applications updates can still break a working deployment 
-- limited regions per provider [dg: is this a IAAS vs PAAS argument?]
+- limited regions per provider [dg: is this AWS vs PAAS argument?]
 
 _Opportunities with cloud computing_
 
