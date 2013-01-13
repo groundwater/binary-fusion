@@ -8,24 +8,29 @@ development and production.
 
 ![Binary Fusion Overview](https://raw.github.com/jacobgroundwater/binary-fusion/assets/Export/Overview.png)
 
-[dg: sorry if you find these annoying, but i am not sure how one comments in place. Please remove after reading.]
-
-[dg: Perhaps my misread, but the diagram seems to imply that you do not start with an AMI? I think that normally you would want to.]
 
 ## Product Vision
 
-_Problems in traditional application deployment_
+_Problems in traditional physical (or p2v) application deployment_
 
-- in-place applications updates are risky [dg: without fully fusing, an upgrade could cook up new images in a similar manner]
-- os updates are difficult without disrupting a running application [dg: same]
-- application rollbacks are difficult [dg: as long as the recipe scripts are in vc, you can roll these back]
+- in-place applications updates are risky
+- os updates are difficult without disrupting a running application 
+- application rollbacks are difficult 
 
 _Problems with Platform as a Services_
-- Paas frameworks will always lag wrt cloud Iaas innovations.
-- Iaas providers will likely evolve and make generic Paas a paasing fad.
-- prohibitive to create private clouds [dg: which aspects are prohibitive?]
+
+- Paas frameworks will always lag behind Iaas innovations.
+- Iaas providers will likely evolve and make many generic Paas a paasing fad.
+- prohibitive (availablibity, expense) to create private clouds 
 - applications updates can still break a working deployment 
 - limited regions per provider [dg: is this AWS vs PAAS argument?]
+
+_Construct Hierarchy_
+
+- Deployment script (e.g. CloudFront)
+- Stack script (e.g. Elastic Beanstalk)
+- Instance script (e.g. BinFusion)
+- Instance preparation script (e.g. Puppet, Chef)
 
 _Opportunities with cloud computing_
 
@@ -37,9 +42,11 @@ _Opportunities with cloud computing_
     - live migration step only involves re-pointing a load balancer
     - rollback is easy
 
-[dg: how is a/b testing done here]
-[dg: for someone like Amazon.com who are reaching high scale of continuous deployment (10 to 50 per day), isn't fusion too heavy?]
+_Testing Considerations_
 
+- How is a/b testing done
+- Staging and Test use different AWS credentials
+- high scale of continuous deployment (10 to 50 per day)
 
 **We need good tools that take this approach!**
 
