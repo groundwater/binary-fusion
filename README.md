@@ -10,13 +10,33 @@ development and production.
 
 ## Product Vision
 
-**TODO** 
+Problems in traditional application deployment:
 
-- list problems with existing deployment methods
-    - problems with PaaS
-    - problems with non VMs
-- state a clear goal in one statement
-- list ways to achieve that goal
+- in-place applications updates are risky
+- os updates are difficult without disrupting a running application
+- application rollbacks are difficult
+
+Problems with Platform as a Services:
+
+- prohibitive to create private clouds
+- applications updates can still break a working deployment
+- limited regions per provider
+
+Opportunities with cloud computing:
+
+- cloud computing makes deploying a brand-new application fast, easy, and cheap
+- virtual machine images are immutable, and re-created each update
+    - os is always up to date
+- rather than update existing applications, the entire stack is replaced each update
+    - the entire working stack can be tested before live deployment
+    - live migration step only involves re-pointing a load balancer
+    - rollback is easy
+
+We need good tools that take this approach!
+
+1. a good tool should provision and create an AMI with one command
+2. a good tool should provide good default builds
+3. a good tool should make deployment fun
 
 ## Installation
 
