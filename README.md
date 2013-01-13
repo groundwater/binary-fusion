@@ -8,19 +8,23 @@ development and production.
 
 ![Binary Fusion Overview](https://raw.github.com/jacobgroundwater/binary-fusion/assets/Export/Overview.png)
 
+[dg: sorry if you find these annoying, but i am not sure how one comments in place. Please remove after reading.]
+[dg: Perhaps my misread, but the diagram seems to imply that you do not start with an AMI? I think that normally you would want to.]
+
 ## Product Vision
 
 _Problems in traditional application deployment_
 
-- in-place applications updates are risky
-- os updates are difficult without disrupting a running application
-- application rollbacks are difficult
+- in-place applications updates are risky [dg: without fully fusing, an upgrade could cook up new images in a similar manner]
+- os updates are difficult without disrupting a running application [dg: same]
+- application rollbacks are difficult [dg: as long as the recipe scripts are in vc, you can roll these back]
 
 _Problems with Platform as a Services_
-
-- prohibitive to create private clouds
-- applications updates can still break a working deployment
-- limited regions per provider
+- Paas frameworks will always lag wrt cloud IAAS innovations]
+- IAAS providers will evove and make generic Paas a paasing fad]
+- prohibitive to create private clouds [dg: which aspects are prohibitive?]
+- applications updates can still break a working deployment 
+- limited regions per provider [dg: is this a IAAS vs PAAS argument?]
 
 _Opportunities with cloud computing_
 
@@ -31,6 +35,10 @@ _Opportunities with cloud computing_
     - the new stack can be tested before live deployment
     - live migration step only involves re-pointing a load balancer
     - rollback is easy
+
+[dg: how is a/b testing done here]
+[dg: for someone like Amazon.com who are reaching high scale of continuous deployment (10 to 50 per day), isn't fusion too heavy?]
+
 
 **We need good tools that take this approach!**
 
@@ -63,3 +71,4 @@ After an new image has been _fused_ it is ready to be attached and run in AWS.
 - [Awesome Command Line Apps](http://www.awesomecommandlineapps.com/)
 - [Airbnb: Tech Talk - Ben Hindman](https://www.youtube.com/watch?v=Hal00g8o1iY)
 - [Homebrew](http://mxcl.github.com/homebrew/)
+- [BundlingAMI] http://www.vim-fu.com/bundling-versioned-amis-rapidly-in-amazons-ec2/
